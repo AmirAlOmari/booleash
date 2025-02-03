@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@booleash/redis": ["libs/server/redis/src/index.ts"],
       "@booleash/shared-domain": ["libs/shared/domain/src/index.ts"]
     }
   },
