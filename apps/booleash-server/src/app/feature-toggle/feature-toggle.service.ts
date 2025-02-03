@@ -1,0 +1,20 @@
+import { Injectable } from '@nestjs/common';
+import { FeatureToggleEntity } from './feature-toggle.entity';
+import { FeatureToggleRepository } from './feature-toggle.repository';
+
+@Injectable()
+export class FeatureToggleService {
+  constructor(
+    private readonly featureToggleRepository: FeatureToggleRepository
+  ) {}
+
+  public async upsert(
+    partial: Pick<FeatureToggleEntity, 'name'> & Partial<FeatureToggleEntity>
+  ): Promise<FeatureToggleEntity> {
+    return await this.featureToggleRepository.upsert(partial);
+  }
+
+  public async getAll(): Promise<FeatureToggleEntity[]> {
+    return await this.featureToggleRepository.getAll();
+  }
+}

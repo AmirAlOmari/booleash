@@ -5,6 +5,7 @@
   "prefix": "lib",
   "projectType": "library",
   "tags": [],
+  "implicitDependencies": ["booleash-server"],
   "targets": {
     "codegen": {
       "executor": "nx:run-commands",

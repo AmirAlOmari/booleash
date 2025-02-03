@@ -6,6 +6,10 @@
   "sourceRoot": "apps/booleash-client/src",
   "tags": [],
   "targets": {
+    "build-deps": {
+      "executor": "nx:noop",
+      "dependsOn": ["^build"]
+    },
     "build": {
       "executor": "@angular-devkit/build-angular:application",
       "outputs": ["{options.outputPath}"],
@@ -59,6 +63,7 @@
     },
     "serve": {
       "executor": "@angular-devkit/build-angular:dev-server",
+      "dependsOn": ["build-deps"],
       "configurations": {
         "production": {
           "buildTarget": "booleash-client:build:production"

@@ -1,1 +1,11 @@
-<router-outlet></router-outlet> QR: {{ qr() | json }}
+<router-outlet></router-outlet>
+
+@if ((getAllFeatureTogglesQueryRef.valueChanges | async )?.loading) {
+<mat-spinner />
+}
+
+<button mat-button (click)="getAllFeatureTogglesQueryRef.refetch()">
+  <mat-icon>refresh</mat-icon>
+</button>
+
+{{ getAllFeatureTogglesQueryRef.valueChanges | async | json }}

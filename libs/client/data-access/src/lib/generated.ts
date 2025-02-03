@@ -30,29 +30,102 @@ export type Scalars = {
   Float: { input: number; output: number };
 };
 
-export type Query = {
-  __typename?: 'Query';
-  getData: Scalars['String']['output'];
+export type FeatureToggleObjectType = {
+  __typename?: 'FeatureToggleObjectType';
+  isControlled: Scalars['Boolean']['output'];
+  isEnabled: Scalars['Boolean']['output'];
+  name: Scalars['String']['output'];
 };
 
-export type GetDataQueryVariables = Exact<{ [key: string]: never }>;
+export type Mutation = {
+  __typename?: 'Mutation';
+  upsertFeatureToggle: FeatureToggleObjectType;
+};
 
-export type GetDataQuery = { __typename?: 'Query'; getData: string };
+export type MutationUpsertFeatureToggleArgs = {
+  payload: UpsertFeatureToggleInputType;
+};
 
-export const GetDataDocument = gql`
-  query GetData {
-    getData
+export type Query = {
+  __typename?: 'Query';
+  getAllFeatureToggles: Array<FeatureToggleObjectType>;
+};
+
+export type UpsertFeatureToggleInputType = {
+  isControlled?: InputMaybe<Scalars['Boolean']['input']>;
+  isEnabled?: InputMaybe<Scalars['Boolean']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type GetAllFeatureTogglesQueryVariables = Exact<{
+  [key: string]: never;
+}>;
+
+export type GetAllFeatureTogglesQuery = {
+  __typename?: 'Query';
+  getAllFeatureToggles: Array<{
+    __typename?: 'FeatureToggleObjectType';
+    isControlled: boolean;
+    isEnabled: boolean;
+    name: string;
+  }>;
+};
+
+export type UpsertFeatureToggleMutationVariables = Exact<{
+  payload: UpsertFeatureToggleInputType;
+}>;
+
+export type UpsertFeatureToggleMutation = {
+  __typename?: 'Mutation';
+  upsertFeatureToggle: {
+    __typename?: 'FeatureToggleObjectType';
+    isControlled: boolean;
+    isEnabled: boolean;
+    name: string;
+  };
+};
+
+export const GetAllFeatureTogglesDocument = gql`
+  query GetAllFeatureToggles {
+    getAllFeatureToggles {
+      isControlled
+      isEnabled
+      name
+    }
   }
 `;
 
 @Injectable({
   providedIn: 'root',
 })
-export class GetDataGQL extends Apollo.Query<
-  GetDataQuery,
-  GetDataQueryVariables
+export class GetAllFeatureTogglesGQL extends Apollo.Query<
+  GetAllFeatureTogglesQuery,
+  GetAllFeatureTogglesQueryVariables
 > {
-  document = GetDataDocument;
+  document = GetAllFeatureTogglesDocument;
+
+  constructor(apollo: Apollo.Apollo) {
+    super(apollo);
+  }
+}
+export const UpsertFeatureToggleDocument = gql`
+  mutation UpsertFeatureToggle($payload: UpsertFeatureToggleInputType!) {
+    upsertFeatureToggle(payload: $payload) {
+      isControlled
+      isEnabled
+      name
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: 'root',
+})
+export class UpsertFeatureToggleGQL extends Apollo.Mutation<
+  UpsertFeatureToggleMutation,
+  UpsertFeatureToggleMutationVariables
+> {
+  document = UpsertFeatureToggleDocument;
 
   constructor(apollo: Apollo.Apollo) {
     super(apollo);

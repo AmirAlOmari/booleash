@@ -34,6 +34,7 @@ export class RedisCoreModule implements OnModuleInit, OnModuleDestroy {
     return {
       module: RedisCoreModule,
       providers: providers,
+      exports: providers,
     };
   }
 

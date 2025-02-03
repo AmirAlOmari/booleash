@@ -10,27 +10,17 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": [
-      "es2020",
-      "dom"
-    ],
+    "lib": ["es2020", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@booleash/client-data-access": [
-        "libs/client/data-access/src/index.ts"
-      ],
-      "@booleash/redis": [
-        "libs/server/redis/src/index.ts"
-      ],
-      "@booleash/shared-domain": [
-        "libs/shared/domain/src/index.ts"
-      ]
+      "@booleash/client-data-access": ["libs/client/data-access/src/index.ts"],
+      "@booleash/client-utils": ["libs/client/utils/src/index.ts"],
+      "@booleash/redis": ["libs/server/redis/src/index.ts"],
+      "@booleash/shared-domain": ["libs/shared/domain/src/index.ts"],
+      "@booleash/shared-utils": ["libs/shared/utils/src/index.ts"]
     }
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  "exclude": ["node_modules", "tmp"]
 }

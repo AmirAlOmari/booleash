@@ -21,6 +21,12 @@ module.exports = {
           entryPath: './src/generate-gql-schema.ts',
         },
       ],
+      transformers: [
+        {
+          name: '@nestjs/graphql/plugin',
+          options: {},
+        },
+      ],
     }),
   ],
 };

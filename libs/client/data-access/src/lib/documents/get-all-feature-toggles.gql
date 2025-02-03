@@ -1,0 +1,7 @@
+query GetAllFeatureToggles {
+  getAllFeatureToggles {
+    isControlled
+    isEnabled
+    name
+  }
+}

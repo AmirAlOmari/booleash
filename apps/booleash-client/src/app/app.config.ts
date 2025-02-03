@@ -10,6 +10,7 @@ import {
 import {
   provideClientHydration,
   withEventReplay,
+  withHttpTransferCacheOptions,
 } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter } from '@angular/router';
@@ -19,7 +20,10 @@ import { pendingTaskInterceptor } from './pending-task.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideClientHydration(withEventReplay()),
+    provideClientHydration(
+      withEventReplay(),
+      withHttpTransferCacheOptions({ includePostRequests: true })
+    ),
     provideExperimentalZonelessChangeDetection(),
     provideRouter(appRoutes),
     provideHttpClient(withFetch(), withInterceptors([pendingTaskInterceptor])),

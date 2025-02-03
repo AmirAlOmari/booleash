@@ -8,6 +8,7 @@ export class RedisModule {
     return {
       module: RedisModule,
       imports: [RedisCoreModule.forRoot(options)],
+      exports: [RedisCoreModule],
     };
   }
 }

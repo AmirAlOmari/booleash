@@ -1,33 +1,34 @@
-import { JsonPipe } from '@angular/common';
-import { Component, inject } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { AsyncPipe, JsonPipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTableModule } from '@angular/material/table';
 import { RouterModule } from '@angular/router';
-import { GetDataGQL } from '@booleash/client-data-access';
-import { tap } from 'rxjs';
+import { GetAllFeatureTogglesGQL } from '@booleash/client-data-access';
+import { injectQuery } from '@booleash/client-utils';
 
 @Component({
-  imports: [JsonPipe, RouterModule],
+  imports: [
+    AsyncPipe,
+    JsonPipe,
+    MatButtonModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+    MatTableModule,
+    RouterModule,
+  ],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  protected readonly getDataGQL = inject(GetDataGQL);
+  private readonly getAllFeatureTogglesGQL = inject(GetAllFeatureTogglesGQL);
 
-  title = 'booleash-client';
-  protected readonly qr = toSignal(
-    this.getDataGQL
-      .watch()
-      .valueChanges.pipe(tap((qr) => console.debug('qr', qr)))
+  protected readonly getAllFeatureTogglesQueryRef =
+    this.getAllFeatureTogglesGQL.watch();
+  protected readonly allFeatureTogglesQuery = injectQuery(() =>
+    this.getAllFeatureTogglesGQL.fetch()
   );
-
-  constructor() {
-    // this.getDataGQL
-    //   .watch()
-    //   .valueChanges.pipe(takeUntilDestroyed())
-    //   .subscribe((qr) => {
-    //     console.debug('qr', qr);
-    //     this.qr = qr;
-    //   });
-  }
 }

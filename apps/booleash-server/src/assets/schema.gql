@@ -1,8 +1,19 @@
-# ------------------------------------------------------
-# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
-# ------------------------------------------------------
+type FeatureToggleObjectType {
+  name: String!
+  isControlled: Boolean!
+  isEnabled: Boolean!
+}
 
 type Query {
-  getData: String!
-  getNumber: Int!
+  getAllFeatureToggles: [FeatureToggleObjectType!]!
+}
+
+type Mutation {
+  upsertFeatureToggle(payload: UpsertFeatureToggleInputType!): FeatureToggleObjectType!
+}
+
+input UpsertFeatureToggleInputType {
+  name: String
+  isControlled: Boolean
+  isEnabled: Boolean
 }

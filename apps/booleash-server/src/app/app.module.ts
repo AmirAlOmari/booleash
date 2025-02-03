@@ -5,8 +5,8 @@ import { Logger, Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'node:path';
 import { AppController } from './app.controller';
-import { AppResolver } from './app.resolver';
 import { AppService } from './app.service';
+import { FeatureToggleModule } from './feature-toggle/feature-toggle.module';
 
 @Module({
   imports: [
@@ -18,14 +18,17 @@ import { AppService } from './app.service';
       ),
       sortSchema: true,
       playground: false,
-      plugins: [ApolloServerPluginLandingPageLocalDefault()],
+      // TODO(amir): `any`? 🤷
+      plugins: [ApolloServerPluginLandingPageLocalDefault() as any],
     }),
     RedisModule.forRoot({
       url: 'redis://localhost:16379',
     }),
+
+    FeatureToggleModule,
   ],
   controllers: [AppController],
-  providers: [AppResolver, AppService],
+  providers: [AppService],
 })
 export class AppModule {
   constructor() {

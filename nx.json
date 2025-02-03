@@ -112,7 +112,8 @@
       "unitTestRunner": "jest"
     },
     "@nx/angular:component": {
-      "style": "sass"
+      "style": "sass",
+      "changeDetection": "OnPush"
     }
   }
 }

@@ -1,0 +1,7 @@
+mutation UpsertFeatureToggle($payload: UpsertFeatureToggleInputType!) {
+  upsertFeatureToggle(payload: $payload) {
+    isControlled
+    isEnabled
+    name
+  }
+}

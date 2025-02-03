@@ -6,10 +6,10 @@ import {
 import { printSchema } from 'graphql';
 import { writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import { AppResolver } from './app/app.resolver';
+import { FeatureToggleResolver } from './app/feature-toggle/feature-toggle.resolver';
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
-const resolvers: Function[] = [AppResolver];
+const resolvers: Function[] = [FeatureToggleResolver];
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 const scalars: Function[] = [];
