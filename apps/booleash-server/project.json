@@ -17,6 +17,17 @@
         }
       }
     },
+    "generate-gql-schema": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build"],
+      "options": {
+        "cwd": "{workspaceRoot}",
+        "command": "node ./dist/apps/booleash-server/generate-gql-schema.js"
+      },
+      "cache": true,
+      "inputs": ["production", "^production"],
+      "outputs": ["{projectRoot}/src/assets/schema.gql"]
+    },
     "serve": {
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",

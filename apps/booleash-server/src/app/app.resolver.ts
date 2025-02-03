@@ -1,0 +1,17 @@
+import { Int, Query, Resolver } from '@nestjs/graphql';
+import { AppService } from './app.service';
+
+@Resolver()
+export class AppResolver {
+  constructor(private readonly appService: AppService) {}
+
+  @Query(() => String)
+  getData() {
+    return this.appService.getData().message;
+  }
+
+  @Query(() => Int)
+  getNumber() {
+    return 1;
+  }
+}

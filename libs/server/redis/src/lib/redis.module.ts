@@ -1,8 +1,13 @@
-import { Module } from '@nestjs/common';
+import { DynamicModule, Module } from '@nestjs/common';
+import { RedisClientOptions } from './redis-client-options.type';
+import { RedisCoreModule } from './redis-core.module';
 
-@Module({
-  controllers: [],
-  providers: [],
-  exports: [],
-})
-export class RedisModule {}
+@Module({})
+export class RedisModule {
+  public static forRoot(options?: RedisClientOptions): DynamicModule {
+    return {
+      module: RedisModule,
+      imports: [RedisCoreModule.forRoot(options)],
+    };
+  }
+}

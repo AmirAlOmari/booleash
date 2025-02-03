@@ -1,0 +1,51 @@
+import {
+  DynamicModule,
+  Global,
+  Logger,
+  Module,
+  OnModuleDestroy,
+  OnModuleInit,
+  Provider,
+} from '@nestjs/common';
+import { InjectRedisClient } from './inject-redis-client.decorator';
+import { createRedisClientOptionsProvider } from './redis-client-options.provider';
+import { RedisClientOptions } from './redis-client-options.type';
+import { createRedisClientProvider } from './redis-client.provider';
+import { RedisClient } from './redis-client.type';
+
+@Global()
+@Module({})
+export class RedisCoreModule implements OnModuleInit, OnModuleDestroy {
+  private readonly logger = new Logger(RedisCoreModule.name, {
+    timestamp: true,
+  });
+
+  constructor(
+    @InjectRedisClient()
+    private readonly redisClient: RedisClient
+  ) {}
+
+  public static forRoot(options?: RedisClientOptions): DynamicModule {
+    const providers: Provider[] = [
+      createRedisClientOptionsProvider(options),
+      createRedisClientProvider(),
+    ];
+
+    return {
+      module: RedisCoreModule,
+      providers: providers,
+    };
+  }
+
+  public async onModuleInit(): Promise<void> {
+    this.logger.log('Connecting to Redis...');
+    await this.redisClient.connect();
+    this.logger.log('Connected to Redis');
+  }
+
+  public async onModuleDestroy(): Promise<void> {
+    this.logger.log('Disconnecting from Redis...');
+    await this.redisClient.disconnect();
+    this.logger.log('Disconnected from Redis');
+  }
+}

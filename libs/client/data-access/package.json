@@ -1,0 +1,10 @@
+{
+  "name": "@booleash/client-data-access",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/core": "^19.1.0",
+    "@graphql-codegen/cli": "^5.0.4",
+    "apollo-angular": "^8.0.1"
+  },
+  "sideEffects": false
+}

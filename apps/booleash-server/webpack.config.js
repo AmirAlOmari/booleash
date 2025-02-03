@@ -15,6 +15,12 @@ module.exports = {
       optimization: false,
       outputHashing: 'none',
       generatePackageJson: true,
+      additionalEntryPoints: [
+        {
+          entryName: 'generate-gql-schema',
+          entryPath: './src/generate-gql-schema.ts',
+        },
+      ],
     }),
   ],
 };
