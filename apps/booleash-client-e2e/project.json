@@ -1,0 +1,9 @@
+{
+  "name": "booleash-client-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/booleash-client-e2e/src",
+  "implicitDependencies": ["booleash-client"],
+  "// targets": "to see all targets run: nx show project booleash-client-e2e --web",
+  "targets": {}
+}
