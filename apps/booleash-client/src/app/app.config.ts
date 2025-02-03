@@ -11,6 +11,7 @@ import {
   provideClientHydration,
   withEventReplay,
 } from '@angular/platform-browser';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter } from '@angular/router';
 import { appRoutes } from './app.routes';
 import { provideConfiguredApollo } from './configured-apollo.provider';
@@ -23,5 +24,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(appRoutes),
     provideHttpClient(withFetch(), withInterceptors([pendingTaskInterceptor])),
     provideConfiguredApollo(),
+    provideAnimationsAsync(),
   ],
 };

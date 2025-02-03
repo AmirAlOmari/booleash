@@ -22,7 +22,10 @@
             "input": "apps/booleash-client/public"
           }
         ],
-        "styles": ["apps/booleash-client/src/styles.scss"],
+        "styles": [
+          "@angular/material/prebuilt-themes/magenta-violet.css",
+          "apps/booleash-client/src/styles.scss"
+        ],
         "scripts": [],
         "server": "apps/booleash-client/src/main.server.ts",
         "ssr": {
