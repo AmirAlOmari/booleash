@@ -1,7 +1,11 @@
 const { NxAppWebpackPlugin } = require('@nx/webpack/app-plugin');
 const { join } = require('path');
 
+/**
+ * @type {import('webpack-cli').ConfigOptions}
+ */
 module.exports = {
+  context: join(__dirname, '../..'),
   output: {
     path: join(__dirname, '../../dist/apps/booleash-server'),
   },
