@@ -26,15 +26,14 @@
       },
       "cache": true,
       "inputs": ["production", "^production"],
-      "outputs": ["{projectRoot}/src/assets/schema.gql"]
+      "outputs": ["{projectRoot}/schema.gql"]
     },
     "serve": {
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
-      "dependsOn": ["build"],
       "options": {
         "buildTarget": "booleash-server:build",
-        "runBuildTargetDependencies": false
+        "runBuildTargetDependencies": true
       },
       "configurations": {
         "development": {

@@ -1,7 +1,7 @@
 import type { CodegenConfig } from '@graphql-codegen/cli';
 
 const config: CodegenConfig = {
-  schema: '../../../apps/booleash-server/src/assets/schema.gql',
+  schema: '../../../apps/booleash-server/schema.gql',
   documents: './src/**/*.gql',
   generates: {
     './src/lib/generated.ts': {

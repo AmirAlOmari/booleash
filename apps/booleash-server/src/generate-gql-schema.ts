@@ -22,7 +22,7 @@ async function generateSchema() {
   const schema = await gqlSchemaFactory.create(resolvers, scalars);
 
   await writeFile(
-    join(process.cwd(), 'apps/booleash-server/src/assets/schema.gql'),
+    join(process.cwd(), 'apps/booleash-server/schema.gql'),
     printSchema(schema)
   );
 }

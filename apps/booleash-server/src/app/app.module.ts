@@ -3,7 +3,6 @@ import { RedisModule } from '@booleash/redis';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Logger, Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
-import { join } from 'node:path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { FeatureToggleModule } from './feature-toggle/feature-toggle.module';
@@ -12,13 +11,11 @@ import { FeatureToggleModule } from './feature-toggle/feature-toggle.module';
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      autoSchemaFile: join(
-        process.cwd(),
-        'apps/booleash-server/src/assets/schema.gql'
-      ),
+      autoSchemaFile: true,
       sortSchema: true,
       playground: false,
       // TODO(amir): `any`? 🤷
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       plugins: [ApolloServerPluginLandingPageLocalDefault() as any],
     }),
     RedisModule.forRoot({

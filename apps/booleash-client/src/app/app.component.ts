@@ -26,9 +26,7 @@ import { injectQuery } from '@booleash/client-utils';
 export class AppComponent {
   private readonly getAllFeatureTogglesGQL = inject(GetAllFeatureTogglesGQL);
 
-  protected readonly getAllFeatureTogglesQueryRef =
-    this.getAllFeatureTogglesGQL.watch();
-  protected readonly allFeatureTogglesQuery = injectQuery(() =>
-    this.getAllFeatureTogglesGQL.fetch()
+  protected readonly allFeatureTogglesQuery = injectQuery.fromGQL(
+    this.getAllFeatureTogglesGQL
   );
 }

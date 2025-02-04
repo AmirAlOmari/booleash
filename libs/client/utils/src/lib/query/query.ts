@@ -5,11 +5,12 @@ import {
   EMPTY,
   Observable,
   ReplaySubject,
+  Subject,
   catchError,
   combineLatest,
-  debounceTime,
   from,
   shareReplay,
+  switchAll,
   switchMap,
   tap,
 } from 'rxjs';
@@ -19,10 +20,13 @@ import { FetchMethod } from './fetch-method.type';
 export class Query<Value, Input = void> {
   private readonly destroyRef = inject(DestroyRef);
 
+  private readonly input$ = new Subject<Observable<Input>>();
+
   constructor(
-    private readonly input$: Observable<Input>,
+    givenInput$: Observable<Input>,
     private readonly fetchMethod: FetchMethod<Value, Input>
   ) {
+    this.input$.next(givenInput$);
     this.refresh$.next();
     this.destroyRef.onDestroy(() => this.destroy());
   }
@@ -32,12 +36,11 @@ export class Query<Value, Input = void> {
   public readonly isLoading$ = new BehaviorSubject<boolean>(false);
   public readonly error$ = new ReplaySubject<unknown>(1);
   public readonly data$: Observable<Value> = combineLatest({
-    // @ts-expect-error - complains about `this.input$`
-    // being accessed before initialization 🤷
-    input: this.input$,
+    input: this.input$.pipe(switchAll()),
     refresh: this.refresh$,
   }).pipe(
-    debounceTime(0),
+    // TODO(amir): there was the following line, no idea why 🤷
+    // debounceTime(0),
     tap(() => this.isLoading$.next(true)),
     switchMap(({ input }) =>
       from(this.fetchMethod(input)).pipe(
@@ -98,6 +101,7 @@ export class Query<Value, Input = void> {
       return;
     }
 
+    this.input$.complete();
     this.refresh$.complete();
     this.isLoading$.complete();
     this.error$.complete();
