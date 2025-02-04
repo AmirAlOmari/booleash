@@ -39,14 +39,26 @@ export class RedisCoreModule implements OnModuleInit, OnModuleDestroy {
   }
 
   public async onModuleInit(): Promise<void> {
-    this.logger.log('Connecting to Redis...');
-    await this.redisClient.connect();
-    this.logger.log('Connected to Redis');
+    try {
+      this.logger.log('Connecting to Redis...');
+      await this.redisClient.connect();
+      this.logger.log('Connected to Redis');
+    } catch (error) {
+      this.logger.error('Failed to connect to redis', { error });
+
+      throw error;
+    }
   }
 
   public async onModuleDestroy(): Promise<void> {
-    this.logger.log('Disconnecting from Redis...');
-    await this.redisClient.disconnect();
-    this.logger.log('Disconnected from Redis');
+    try {
+      this.logger.log('Disconnecting from Redis...');
+      await this.redisClient.disconnect();
+      this.logger.log('Disconnected from Redis');
+    } catch (error) {
+      this.logger.error('Failed to disconnect from redis', { error });
+
+      throw error;
+    }
   }
 }

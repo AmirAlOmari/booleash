@@ -1,4 +1,4 @@
-import { AsyncPipe, JsonPipe } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -10,7 +10,6 @@ import { injectQuery } from '@booleash/client-utils';
 
 @Component({
   imports: [
-    AsyncPipe,
     JsonPipe,
     MatButtonModule,
     MatIconModule,
