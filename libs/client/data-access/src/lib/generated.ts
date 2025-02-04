@@ -51,6 +51,11 @@ export type Query = {
   getAllFeatureToggles: Array<FeatureToggleObjectType>;
 };
 
+export type Subscription = {
+  __typename?: 'Subscription';
+  featureToggleUpserted: FeatureToggleObjectType;
+};
+
 export type UpsertFeatureToggleInputType = {
   isControlled?: InputMaybe<Scalars['Boolean']['input']>;
   isEnabled?: InputMaybe<Scalars['Boolean']['input']>;

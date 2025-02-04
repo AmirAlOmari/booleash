@@ -17,6 +17,9 @@ import { FeatureToggleModule } from './feature-toggle/feature-toggle.module';
       // TODO(amir): `any`? 🤷
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       plugins: [ApolloServerPluginLandingPageLocalDefault() as any],
+      subscriptions: {
+        'graphql-ws': true,
+      },
     }),
     RedisModule.forRoot({
       url: 'redis://localhost:16379',

@@ -17,3 +17,7 @@ input UpsertFeatureToggleInputType {
   isControlled: Boolean
   isEnabled: Boolean
 }
+
+type Subscription {
+  featureToggleUpserted: FeatureToggleObjectType!
+}
