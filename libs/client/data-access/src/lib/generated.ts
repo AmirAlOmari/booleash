@@ -1,4 +1,5 @@
-import { gql } from 'apollo-angular';
+import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
+import * as Operations from 'noop';
 import { Injectable } from '@angular/core';
 import * as Apollo from 'apollo-angular';
 export type Maybe<T> = T | null;
@@ -104,15 +105,131 @@ export type UpsertFeatureToggleMutation = {
   };
 };
 
-export const GetAllFeatureTogglesDocument = gql`
-  query GetAllFeatureToggles {
-    getAllFeatureToggles {
-      isControlled
-      isEnabled
-      name
-    }
-  }
-`;
+export const GetAllFeatureTogglesDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'GetAllFeatureToggles' },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'getAllFeatureToggles' },
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'isControlled' },
+                },
+                { kind: 'Field', name: { kind: 'Name', value: 'isEnabled' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  GetAllFeatureTogglesQuery,
+  GetAllFeatureTogglesQueryVariables
+>;
+export const SubscribeFeatureToggleUpsertedDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'subscription',
+      name: { kind: 'Name', value: 'SubscribeFeatureToggleUpserted' },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'featureToggleUpserted' },
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'isControlled' },
+                },
+                { kind: 'Field', name: { kind: 'Name', value: 'isEnabled' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  SubscribeFeatureToggleUpsertedSubscription,
+  SubscribeFeatureToggleUpsertedSubscriptionVariables
+>;
+export const UpsertFeatureToggleDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'mutation',
+      name: { kind: 'Name', value: 'UpsertFeatureToggle' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: {
+            kind: 'Variable',
+            name: { kind: 'Name', value: 'payload' },
+          },
+          type: {
+            kind: 'NonNullType',
+            type: {
+              kind: 'NamedType',
+              name: { kind: 'Name', value: 'UpsertFeatureToggleInputType' },
+            },
+          },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'upsertFeatureToggle' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'payload' },
+                value: {
+                  kind: 'Variable',
+                  name: { kind: 'Name', value: 'payload' },
+                },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'isControlled' },
+                },
+                { kind: 'Field', name: { kind: 'Name', value: 'isEnabled' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  UpsertFeatureToggleMutation,
+  UpsertFeatureToggleMutationVariables
+>;
 
 @Injectable({
   providedIn: 'root',
@@ -127,15 +244,6 @@ export class GetAllFeatureTogglesGQL extends Apollo.Query<
     super(apollo);
   }
 }
-export const SubscribeFeatureToggleUpsertedDocument = gql`
-  subscription SubscribeFeatureToggleUpserted {
-    featureToggleUpserted {
-      isControlled
-      isEnabled
-      name
-    }
-  }
-`;
 
 @Injectable({
   providedIn: 'root',
@@ -150,15 +258,6 @@ export class SubscribeFeatureToggleUpsertedGQL extends Apollo.Subscription<
     super(apollo);
   }
 }
-export const UpsertFeatureToggleDocument = gql`
-  mutation UpsertFeatureToggle($payload: UpsertFeatureToggleInputType!) {
-    upsertFeatureToggle(payload: $payload) {
-      isControlled
-      isEnabled
-      name
-    }
-  }
-`;
 
 @Injectable({
   providedIn: 'root',

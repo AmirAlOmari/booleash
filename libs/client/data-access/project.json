@@ -20,7 +20,7 @@
         "parallel": false
       },
       "cache": true,
-      "inputs": ["{projectRoot}/src/**/*.gql"],
+      "inputs": ["{projectRoot}/src/**/*.gql", "{projectRoot}/codegen.ts"],
       "outputs": ["{projectRoot}/src/lib/generated.ts"]
     },
     "build": {
