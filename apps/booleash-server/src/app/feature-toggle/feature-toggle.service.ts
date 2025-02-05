@@ -15,7 +15,9 @@ export class FeatureToggleService {
     partial: Pick<FeatureToggleEntity, 'name'> & Partial<FeatureToggleEntity>
   ): Promise<FeatureToggleEntity> {
     const entity = await this.featureToggleRepository.upsert(partial);
-    this.graphqlPubSub.publish('featureToggleUpserted', entity);
+    this.graphqlPubSub.publish('featureToggleUpserted', {
+      featureToggleUpserted: entity,
+    });
 
     return entity;
   }

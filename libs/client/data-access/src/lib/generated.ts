@@ -76,6 +76,20 @@ export type GetAllFeatureTogglesQuery = {
   }>;
 };
 
+export type SubscribeFeatureToggleUpsertedSubscriptionVariables = Exact<{
+  [key: string]: never;
+}>;
+
+export type SubscribeFeatureToggleUpsertedSubscription = {
+  __typename?: 'Subscription';
+  featureToggleUpserted: {
+    __typename?: 'FeatureToggleObjectType';
+    isControlled: boolean;
+    isEnabled: boolean;
+    name: string;
+  };
+};
+
 export type UpsertFeatureToggleMutationVariables = Exact<{
   payload: UpsertFeatureToggleInputType;
 }>;
@@ -108,6 +122,29 @@ export class GetAllFeatureTogglesGQL extends Apollo.Query<
   GetAllFeatureTogglesQueryVariables
 > {
   document = GetAllFeatureTogglesDocument;
+
+  constructor(apollo: Apollo.Apollo) {
+    super(apollo);
+  }
+}
+export const SubscribeFeatureToggleUpsertedDocument = gql`
+  subscription SubscribeFeatureToggleUpserted {
+    featureToggleUpserted {
+      isControlled
+      isEnabled
+      name
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: 'root',
+})
+export class SubscribeFeatureToggleUpsertedGQL extends Apollo.Subscription<
+  SubscribeFeatureToggleUpsertedSubscription,
+  SubscribeFeatureToggleUpsertedSubscriptionVariables
+> {
+  document = SubscribeFeatureToggleUpsertedDocument;
 
   constructor(apollo: Apollo.Apollo) {
     super(apollo);

@@ -8,4 +8,24 @@
   <mat-icon>refresh</mat-icon>
 </button>
 
-{{ allFeatureTogglesQuery.data() | json }}
+{{ allFeatureTogglesQuery.data()?.getAllFeatureToggles | json }}
+
+<fieldset [disabled]="upsertFeatureToggleMutation.isPerforming()">
+  <form [formGroup]="form">
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Feature toggle name"
+        formControlName="name"
+      />
+    </mat-form-field>
+
+    <mat-slide-toggle formControlName="isControlled">
+      Is Controlled
+    </mat-slide-toggle>
+
+    <mat-checkbox formControlName="isEnabled"> Is Enabled </mat-checkbox>
+
+    <button mat-raised-button (click)="upsert()">Create feature toggle</button>
+  </form>
+</fieldset>

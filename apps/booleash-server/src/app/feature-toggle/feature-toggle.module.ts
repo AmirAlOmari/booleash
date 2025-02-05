@@ -6,9 +6,8 @@ import { FeatureToggleResolver } from './feature-toggle.resolver';
 import { FeatureToggleService } from './feature-toggle.service';
 
 @Module({
-  imports: [RedisModule],
+  imports: [RedisModule, GraphqlPubSubModule],
   providers: [
-    GraphqlPubSubModule,
     FeatureToggleRepository,
     FeatureToggleService,
     FeatureToggleResolver,

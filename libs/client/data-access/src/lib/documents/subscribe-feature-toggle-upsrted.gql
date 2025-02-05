@@ -1,0 +1,7 @@
+subscription SubscribeFeatureToggleUpserted {
+  featureToggleUpserted {
+    isControlled
+    isEnabled
+    name
+  }
+}
