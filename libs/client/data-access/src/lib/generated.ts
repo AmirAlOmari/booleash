@@ -1,5 +1,4 @@
 import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
-import * as Operations from 'noop';
 import { Injectable } from '@angular/core';
 import * as Apollo from 'apollo-angular';
 export type Maybe<T> = T | null;

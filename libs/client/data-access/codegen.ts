@@ -1,4 +1,5 @@
 import type { CodegenConfig } from '@graphql-codegen/cli';
+import { join } from 'node:path';
 
 const FILE_PATH = './src/lib/generated.ts';
 const NOOP_IMPORT_PATH = 'noop';
@@ -19,6 +20,18 @@ const config: CodegenConfig = {
           },
         },
       ],
+      hooks: {
+        beforeOneFileWrite: (filename, code) => {
+          if (filename !== join(__dirname, FILE_PATH)) {
+            return code;
+          }
+
+          return code.replace(
+            `import * as Operations from '${NOOP_IMPORT_PATH}';\n`,
+            ''
+          );
+        },
+      },
     },
   },
 };
