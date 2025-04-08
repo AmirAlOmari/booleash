@@ -21,7 +21,9 @@ async function generateSchema() {
 
   const gqlSchemaFactory = app.get(GraphQLSchemaFactory);
   const schema = await gqlSchemaFactory.create(resolvers, scalars);
-  const formattedSchema = await format(printSchema(schema));
+  const formattedSchema = await format(printSchema(schema), {
+    parser: 'graphql',
+  });
 
   await writeFile(
     join(process.cwd(), 'apps/tablit-server/schema.gql'),
