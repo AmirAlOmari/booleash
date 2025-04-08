@@ -10,7 +10,7 @@ import { finalize, Observable } from 'rxjs';
 // yet not reflected in the output.
 export function pendingTaskInterceptor(
   req: HttpRequest<unknown>,
-  next: HttpHandlerFn
+  next: HttpHandlerFn,
 ): Observable<HttpEvent<unknown>> {
   const pendingTasks = inject(PendingTasks);
   const pendingTask = pendingTasks.add();
@@ -18,6 +18,6 @@ export function pendingTaskInterceptor(
   return next(req).pipe(
     finalize(() => {
       pendingTask();
-    })
+    }),
   );
 }

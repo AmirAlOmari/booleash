@@ -9,7 +9,9 @@ type Query {
 }
 
 type Mutation {
-  upsertFeatureToggle(payload: UpsertFeatureToggleInputType!): FeatureToggleObjectType!
+  upsertFeatureToggle(
+    payload: UpsertFeatureToggleInputType!
+  ): FeatureToggleObjectType!
 }
 
 input UpsertFeatureToggleInputType {

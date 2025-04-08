@@ -10,5 +10,5 @@ import { FeatureToggleObjectType } from './feature-toggle.object-type';
 export class UpsertFeatureToggleInputType extends IntersectionType(
   PickType(FeatureToggleObjectType, ['name']),
   PartialType(FeatureToggleObjectType),
-  InputType
+  InputType,
 ) {}

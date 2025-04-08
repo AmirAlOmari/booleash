@@ -22,7 +22,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideClientHydration(
       withEventReplay(),
-      withHttpTransferCacheOptions({ includePostRequests: true })
+      withHttpTransferCacheOptions({ includePostRequests: true }),
     ),
     provideExperimentalZonelessChangeDetection(),
     provideRouter(appRoutes),

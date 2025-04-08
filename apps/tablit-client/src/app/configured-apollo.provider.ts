@@ -17,7 +17,7 @@ export function provideConfiguredApollo() {
     const wsLink = new GraphQLWsLink(
       createClient({
         url: 'ws://localhost:3000/graphql',
-      })
+      }),
     );
 
     // Using the ability to split links, you can send data to each link
@@ -32,7 +32,7 @@ export function provideConfiguredApollo() {
         );
       },
       wsLink,
-      httpLink
+      httpLink,
     );
     const cache = new InMemoryCache();
 

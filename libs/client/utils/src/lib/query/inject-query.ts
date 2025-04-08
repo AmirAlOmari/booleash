@@ -11,17 +11,17 @@ type ExactlyEmptyObject = {
 
 export interface InjectQueryFromGQL {
   <Value, ApolloQuery extends Apollo.Query<Value, ExactlyEmptyObject>>(
-    gqlQuery: Pick<ApolloQuery, 'watch'>
+    gqlQuery: Pick<ApolloQuery, 'watch'>,
   ): Query<Value>;
 
   withInput: {
     <
       Value,
       Input extends OperationVariables,
-      ApolloQuery extends Apollo.Query<Value, Input>
+      ApolloQuery extends Apollo.Query<Value, Input>,
     >(
       input$: ObservableInput<Input>,
-      gqlQuery: Pick<ApolloQuery, 'watch'>
+      gqlQuery: Pick<ApolloQuery, 'watch'>,
     ): Query<Value, Input>;
   };
 }
@@ -32,7 +32,7 @@ export interface InjectQuery {
   withInput: {
     <Value, Input>(
       input$: ObservableInput<Input>,
-      fetchMethod: FetchMethod<Value, Input>
+      fetchMethod: FetchMethod<Value, Input>,
     ): Query<Value, Input>;
   };
 
@@ -40,7 +40,7 @@ export interface InjectQuery {
 }
 
 function injectQueryFunction<Value>(
-  fetchMethod: FetchMethod<Value>
+  fetchMethod: FetchMethod<Value>,
 ): Query<Value> {
   assertInInjectionContext(injectQueryFunction);
 
@@ -49,7 +49,7 @@ function injectQueryFunction<Value>(
 
 function injectQueryWithInputFunction<Value, Input = void>(
   input$: ObservableInput<Input>,
-  fetchMethod: FetchMethod<Value, Input>
+  fetchMethod: FetchMethod<Value, Input>,
 ): Query<Value, Input> {
   assertInInjectionContext(injectQueryWithInputFunction);
 
@@ -65,7 +65,7 @@ function mapApolloQueryResult<Value>(result: ApolloQueryResult<Value>): Value {
 }
 
 function injectQueryFromGQLFunction<Value>(
-  gqlQuery: Pick<Apollo.Query<Value, ExactlyEmptyObject>, 'watch'>
+  gqlQuery: Pick<Apollo.Query<Value, ExactlyEmptyObject>, 'watch'>,
 ): Query<Value> {
   assertInInjectionContext(injectQueryFromGQLFunction);
 
@@ -84,10 +84,10 @@ function injectQueryFromGQLFunction<Value>(
 
 function injectQueryFromGQLWithInputFunction<
   Value,
-  Input extends OperationVariables
+  Input extends OperationVariables,
 >(
   input$: ObservableInput<Input>,
-  gqlQuery: Pick<Apollo.Query<Value, Input>, 'watch'>
+  gqlQuery: Pick<Apollo.Query<Value, Input>, 'watch'>,
 ): Query<Value, Input> {
   assertInInjectionContext(injectQueryFromGQLWithInputFunction);
 

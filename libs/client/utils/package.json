@@ -6,7 +6,7 @@
     "@apollo/client": "^3.12.8",
     "apollo-angular": "^8.0.1",
     "rxjs": "~7.8.0",
-    "@booleash/shared-utils": "0.0.1"
+    "@tablit/shared-utils": "0.0.1"
   },
   "sideEffects": false
 }

@@ -1,7 +1,7 @@
 <router-outlet></router-outlet>
 
 @if (allFeatureTogglesQuery.isLoading()) {
-<mat-spinner />
+  <mat-spinner />
 }
 
 <button mat-button (click)="allFeatureTogglesQuery.refresh()">

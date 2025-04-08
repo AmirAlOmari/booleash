@@ -6,6 +6,7 @@ import {
 import { printSchema } from 'graphql';
 import { writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
+import { format } from 'prettier';
 import { FeatureToggleResolver } from './app/feature-toggle/feature-toggle.resolver';
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
@@ -20,10 +21,11 @@ async function generateSchema() {
 
   const gqlSchemaFactory = app.get(GraphQLSchemaFactory);
   const schema = await gqlSchemaFactory.create(resolvers, scalars);
+  const formattedSchema = await format(printSchema(schema));
 
   await writeFile(
     join(process.cwd(), 'apps/tablit-server/schema.gql'),
-    printSchema(schema)
+    formattedSchema,
   );
 }
 

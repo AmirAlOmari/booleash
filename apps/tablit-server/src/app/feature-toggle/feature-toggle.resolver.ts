@@ -13,7 +13,7 @@ export class FeatureToggleResolver {
   constructor(
     private readonly featureToggleService: FeatureToggleService,
     @InjectGraphqlPubSub()
-    private readonly graphqlPubSub: GraphqlPubSub
+    private readonly graphqlPubSub: GraphqlPubSub,
   ) {}
 
   @Query(() => [FeatureToggleObjectType])
@@ -23,7 +23,7 @@ export class FeatureToggleResolver {
 
   @Mutation(() => FeatureToggleObjectType)
   public async upsertFeatureToggle(
-    @Args('payload') payload: UpsertFeatureToggleInputType
+    @Args('payload') payload: UpsertFeatureToggleInputType,
   ): Promise<FeatureToggleObjectType> {
     return await this.featureToggleService.upsert(payload);
   }

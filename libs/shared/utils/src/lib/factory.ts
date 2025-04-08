@@ -1,6 +1,6 @@
 export function factory<T extends object>(
   classType: new () => T,
-  partial?: Partial<T>
+  partial?: Partial<T>,
 ): T {
   const instance = new classType();
 

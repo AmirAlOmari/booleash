@@ -7,11 +7,11 @@ import { FeatureToggleEntity } from './feature-toggle.entity';
 export class FeatureToggleRepository {
   constructor(
     @InjectRedisClient()
-    private readonly redisClient: RedisClient
+    private readonly redisClient: RedisClient,
   ) {}
 
   public async upsert(
-    partial: Pick<FeatureToggleEntity, 'name'> & Partial<FeatureToggleEntity>
+    partial: Pick<FeatureToggleEntity, 'name'> & Partial<FeatureToggleEntity>,
   ): Promise<FeatureToggleEntity> {
     const existing = await this.get(partial.name);
     const entity = {
@@ -21,7 +21,7 @@ export class FeatureToggleRepository {
 
     await this.redisClient.set(
       this.createKey(partial.name),
-      JSON.stringify(entity)
+      JSON.stringify(entity),
     );
 
     return entity;

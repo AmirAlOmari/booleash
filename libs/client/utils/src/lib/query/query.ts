@@ -24,7 +24,7 @@ export class Query<Value, Input = void> {
 
   constructor(
     givenInput$: Observable<Input>,
-    private readonly fetchMethod: FetchMethod<Value, Input>
+    private readonly fetchMethod: FetchMethod<Value, Input>,
   ) {
     this.input$.next(givenInput$);
     this.refresh$.next();
@@ -57,11 +57,11 @@ export class Query<Value, Input = void> {
           this.error$.next(error);
 
           return EMPTY;
-        })
-      )
+        }),
+      ),
     ),
     shareReplay(1),
-    takeUntilDestroyed(this.destroyRef)
+    takeUntilDestroyed(this.destroyRef),
   );
   #isDestroyed = false;
   get isDestroyed(): boolean {

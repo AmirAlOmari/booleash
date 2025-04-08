@@ -8,11 +8,11 @@ export class FeatureToggleService {
   constructor(
     private readonly featureToggleRepository: FeatureToggleRepository,
     @InjectGraphqlPubSub()
-    private readonly graphqlPubSub: GraphqlPubSub
+    private readonly graphqlPubSub: GraphqlPubSub,
   ) {}
 
   public async upsert(
-    partial: Pick<FeatureToggleEntity, 'name'> & Partial<FeatureToggleEntity>
+    partial: Pick<FeatureToggleEntity, 'name'> & Partial<FeatureToggleEntity>,
   ): Promise<FeatureToggleEntity> {
     const entity = await this.featureToggleRepository.upsert(partial);
     this.graphqlPubSub.publish('featureToggleUpserted', {

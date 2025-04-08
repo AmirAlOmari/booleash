@@ -28,7 +28,7 @@ const config: CodegenConfig = {
 
           return code.replace(
             `import * as Operations from '${NOOP_IMPORT_PATH}';\n`,
-            ''
+            '',
           );
         },
       },

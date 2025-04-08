@@ -22,7 +22,7 @@ export class RedisCoreModule implements OnModuleInit, OnModuleDestroy {
 
   constructor(
     @InjectRedisClient()
-    private readonly redisClient: RedisClient
+    private readonly redisClient: RedisClient,
   ) {}
 
   public static forRoot(options?: RedisClientOptions): DynamicModule {

@@ -12,22 +12,22 @@ export interface InjectMutationFromGQL {
   <
     Input extends OperationVariables,
     Value,
-    ApolloMutation extends Apollo.Mutation<Value, Input>
+    ApolloMutation extends Apollo.Mutation<Value, Input>,
   >(
-    gqlMutation: Pick<ApolloMutation, 'mutate'>
+    gqlMutation: Pick<ApolloMutation, 'mutate'>,
   ): Mutation<[Input], Value>;
 }
 
 export interface InjectMutation {
   <Input extends any[], Result>(
-    mutationMethod: MutationMethod<Input, Result>
+    mutationMethod: MutationMethod<Input, Result>,
   ): Mutation<Input, Result>;
 
   fromGQL: InjectMutationFromGQL;
 }
 
 function injectMutationFunction<Input extends any[], Result>(
-  mutationMethod: MutationMethod<Input, Result>
+  mutationMethod: MutationMethod<Input, Result>,
 ): Mutation<Input, Result> {
   assertInInjectionContext(injectMutationFunction);
   const mutation = new Mutation(mutationMethod);
@@ -36,7 +36,7 @@ function injectMutationFunction<Input extends any[], Result>(
 }
 
 function mapApolloQueryResult<Value>(
-  result: Apollo.MutationResult<Value>
+  result: Apollo.MutationResult<Value>,
 ): Value | null {
   if (result.errors) {
     throw new ApolloError({ graphQLErrors: result.errors });
@@ -50,11 +50,11 @@ function mapApolloQueryResult<Value>(
 }
 
 function injectMutationFromGQLFunction<Input extends OperationVariables, Value>(
-  gqlMutation: Pick<Apollo.Mutation<Value, Input>, 'mutate'>
+  gqlMutation: Pick<Apollo.Mutation<Value, Input>, 'mutate'>,
 ): Mutation<[Input], Value> {
   assertInInjectionContext(injectMutationFromGQLFunction);
   const mutation = new Mutation<[Input], Value>((payload) =>
-    gqlMutation.mutate(payload).pipe(map(mapApolloQueryResult), filterNil())
+    gqlMutation.mutate(payload).pipe(map(mapApolloQueryResult), filterNil()),
   );
 
   return mutation;
@@ -64,5 +64,5 @@ export const injectMutation: InjectMutation = Object.assign(
   injectMutationFunction,
   {
     fromGQL: injectMutationFromGQLFunction,
-  }
+  },
 );

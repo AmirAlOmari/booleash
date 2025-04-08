@@ -48,11 +48,11 @@ export class Mutation<Input extends unknown[], Result> {
           this.error$.next(error);
 
           return EMPTY;
-        })
-      )
+        }),
+      ),
     ),
     shareReplay(1),
-    takeUntilDestroyed(this.destroyRef)
+    takeUntilDestroyed(this.destroyRef),
   );
   #isDestroyed = false;
   get isDestroyed(): boolean {
@@ -70,7 +70,7 @@ export class Mutation<Input extends unknown[], Result> {
 
     if (this.currentRun$) {
       console.warn(
-        'A mutation is already running. The result of the current run will be emitted.'
+        'A mutation is already running. The result of the current run will be emitted.',
       );
       return this.currentRun$.asObservable();
     }

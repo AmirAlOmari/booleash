@@ -47,13 +47,13 @@ export class AppComponent {
   private readonly destroyRef = inject(DestroyRef);
   private readonly fb = inject(FormBuilder);
   private readonly subscribeFeatureToggleUpsertedGQL = inject(
-    SubscribeFeatureToggleUpsertedGQL
+    SubscribeFeatureToggleUpsertedGQL,
   );
   protected readonly allFeatureTogglesQuery = injectQuery.fromGQL(
-    inject(GetAllFeatureTogglesGQL)
+    inject(GetAllFeatureTogglesGQL),
   );
   protected readonly upsertFeatureToggleMutation = injectMutation.fromGQL(
-    inject(UpsertFeatureToggleGQL)
+    inject(UpsertFeatureToggleGQL),
   );
 
   constructor() {
