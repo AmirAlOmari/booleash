@@ -21,8 +21,8 @@ import {
   SubscribeFeatureToggleUpsertedDocument,
   SubscribeFeatureToggleUpsertedGQL,
   UpsertFeatureToggleGQL,
-} from '@booleash/client-data-access';
-import { injectMutation, injectQuery } from '@booleash/client-utils';
+} from '@tablit/client-data-access';
+import { injectMutation, injectQuery } from '@tablit/client-utils';
 
 @Component({
   imports: [

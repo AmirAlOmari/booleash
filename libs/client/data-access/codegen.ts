@@ -5,7 +5,7 @@ const FILE_PATH = './src/lib/generated.ts';
 const NOOP_IMPORT_PATH = 'noop';
 
 const config: CodegenConfig = {
-  schema: '../../../apps/booleash-server/schema.gql',
+  schema: '../../../apps/tablit-server/schema.gql',
   documents: './src/**/*.gql',
   generates: {
     [FILE_PATH]: {

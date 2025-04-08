@@ -7,7 +7,7 @@ const { join } = require('path');
 module.exports = {
   context: join(__dirname, '../..'),
   output: {
-    path: join(__dirname, '../../dist/apps/booleash-server'),
+    path: join(__dirname, '../../dist/apps/tablit-server'),
   },
   plugins: [
     new NxAppWebpackPlugin({

@@ -5,11 +5,11 @@
   "prefix": "lib",
   "projectType": "library",
   "tags": [],
-  "implicitDependencies": ["booleash-server"],
+  "implicitDependencies": ["tablit-server"],
   "targets": {
     "codegen": {
       "executor": "nx:run-commands",
-      "dependsOn": ["booleash-server:generate-gql-schema"],
+      "dependsOn": ["tablit-server:generate-gql-schema"],
       "options": {
         "cwd": "{projectRoot}",
         "commands": [

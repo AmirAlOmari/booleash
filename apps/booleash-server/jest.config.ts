@@ -1,10 +1,10 @@
 export default {
-  displayName: 'booleash-server',
+  displayName: 'tablit-server',
   preset: '../../jest.preset.js',
   testEnvironment: 'node',
   transform: {
     '^.+\\.[tj]s$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.spec.json' }],
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/apps/booleash-server',
+  coverageDirectory: '../../coverage/apps/tablit-server',
 };

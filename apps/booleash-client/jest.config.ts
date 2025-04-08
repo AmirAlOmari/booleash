@@ -1,8 +1,8 @@
 export default {
-  displayName: 'booleash-client',
+  displayName: 'tablit-client',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../coverage/apps/booleash-client',
+  coverageDirectory: '../../coverage/apps/tablit-client',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

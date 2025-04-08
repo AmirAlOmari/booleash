@@ -6,7 +6,7 @@ export class FeatureToggleEntity {
 
   /**
    * Whether the feature is controlled by the
-   * booleash or the check should be passed through.
+   * tablit or the check should be passed through.
    */
   public isControlled = false;
 

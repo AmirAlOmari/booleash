@@ -1,4 +1,4 @@
-import { isNotNil, Nil, NotNil } from '@booleash/shared-utils';
+import { isNotNil, Nil, NotNil } from '@tablit/shared-utils';
 import { filter, Observable } from 'rxjs';
 
 export function filterNil<T>() {

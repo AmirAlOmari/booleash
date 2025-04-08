@@ -1,5 +1,5 @@
-import { GraphqlPubSub, InjectGraphqlPubSub } from '@booleash/graphql-pub-sub';
 import { Injectable } from '@nestjs/common';
+import { GraphqlPubSub, InjectGraphqlPubSub } from '@tablit/graphql-pub-sub';
 import { FeatureToggleEntity } from './feature-toggle.entity';
 import { FeatureToggleRepository } from './feature-toggle.repository';
 

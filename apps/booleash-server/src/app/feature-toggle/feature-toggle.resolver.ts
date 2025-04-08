@@ -1,9 +1,9 @@
+import { Args, Mutation, Query, Resolver, Subscription } from '@nestjs/graphql';
 import {
   GraphqlPubSub,
   GraphqlPubSubAsyncIterableIterator,
   InjectGraphqlPubSub,
-} from '@booleash/graphql-pub-sub';
-import { Args, Mutation, Query, Resolver, Subscription } from '@nestjs/graphql';
+} from '@tablit/graphql-pub-sub';
 import { FeatureToggleObjectType } from './feature-toggle.object-type';
 import { FeatureToggleService } from './feature-toggle.service';
 import { UpsertFeatureToggleInputType } from './upsert-feature-toggle.input-type';

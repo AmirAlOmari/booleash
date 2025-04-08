@@ -1,7 +1,7 @@
 {
-  "name": "booleash-server",
+  "name": "tablit-server",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/booleash-server/src",
+  "sourceRoot": "apps/tablit-server/src",
   "projectType": "application",
   "tags": [],
   "targets": {
@@ -22,7 +22,7 @@
       "dependsOn": ["build"],
       "options": {
         "cwd": "{workspaceRoot}",
-        "command": "node ./dist/apps/booleash-server/generate-gql-schema.js"
+        "command": "node ./dist/apps/tablit-server/generate-gql-schema.js"
       },
       "cache": true,
       "inputs": ["production", "^production"],
@@ -32,15 +32,15 @@
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "booleash-server:build",
+        "buildTarget": "tablit-server:build",
         "runBuildTargetDependencies": true
       },
       "configurations": {
         "development": {
-          "buildTarget": "booleash-server:build:development"
+          "buildTarget": "tablit-server:build:development"
         },
         "production": {
-          "buildTarget": "booleash-server:build:production"
+          "buildTarget": "tablit-server:build:production"
         }
       }
     },

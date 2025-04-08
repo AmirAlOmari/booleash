@@ -1,8 +1,8 @@
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
-import { RedisModule } from '@booleash/redis';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Logger, Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
+import { RedisModule } from '@tablit/redis';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { FeatureToggleModule } from './feature-toggle/feature-toggle.module';

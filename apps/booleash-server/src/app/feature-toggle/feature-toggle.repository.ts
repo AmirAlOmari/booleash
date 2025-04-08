@@ -1,6 +1,6 @@
-import { InjectRedisClient, RedisClient } from '@booleash/redis';
-import { factory, isNotNil, stripNulls } from '@booleash/shared-utils';
 import { Injectable } from '@nestjs/common';
+import { InjectRedisClient, RedisClient } from '@tablit/redis';
+import { factory, isNotNil, stripNulls } from '@tablit/shared-utils';
 import { FeatureToggleEntity } from './feature-toggle.entity';
 
 @Injectable()

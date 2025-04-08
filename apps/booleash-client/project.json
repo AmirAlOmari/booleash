@@ -1,9 +1,9 @@
 {
-  "name": "booleash-client",
+  "name": "tablit-client",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "prefix": "app",
-  "sourceRoot": "apps/booleash-client/src",
+  "sourceRoot": "apps/tablit-client/src",
   "tags": [],
   "targets": {
     "build-deps": {
@@ -14,26 +14,26 @@
       "executor": "@angular-devkit/build-angular:application",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/booleash-client",
-        "index": "apps/booleash-client/src/index.html",
-        "browser": "apps/booleash-client/src/main.ts",
+        "outputPath": "dist/apps/tablit-client",
+        "index": "apps/tablit-client/src/index.html",
+        "browser": "apps/tablit-client/src/main.ts",
         "polyfills": [],
-        "tsConfig": "apps/booleash-client/tsconfig.app.json",
+        "tsConfig": "apps/tablit-client/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
           {
             "glob": "**/*",
-            "input": "apps/booleash-client/public"
+            "input": "apps/tablit-client/public"
           }
         ],
         "styles": [
           "@angular/material/prebuilt-themes/magenta-violet.css",
-          "apps/booleash-client/src/styles.scss"
+          "apps/tablit-client/src/styles.scss"
         ],
         "scripts": [],
-        "server": "apps/booleash-client/src/main.server.ts",
+        "server": "apps/tablit-client/src/main.server.ts",
         "ssr": {
-          "entry": "apps/booleash-client/src/server.ts"
+          "entry": "apps/tablit-client/src/server.ts"
         },
         "outputMode": "server"
       },
@@ -66,10 +66,10 @@
       "dependsOn": ["build-deps"],
       "configurations": {
         "production": {
-          "buildTarget": "booleash-client:build:production"
+          "buildTarget": "tablit-client:build:production"
         },
         "development": {
-          "buildTarget": "booleash-client:build:development"
+          "buildTarget": "tablit-client:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -77,7 +77,7 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "buildTarget": "booleash-client:build"
+        "buildTarget": "tablit-client:build"
       }
     },
     "lint": {
@@ -87,15 +87,15 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/booleash-client/jest.config.ts"
+        "jestConfig": "apps/tablit-client/jest.config.ts"
       }
     },
     "serve-static": {
       "executor": "@nx/web:file-server",
       "options": {
-        "buildTarget": "booleash-client:build",
+        "buildTarget": "tablit-client:build",
         "port": 4200,
-        "staticFilePath": "dist/apps/booleash-client/browser",
+        "staticFilePath": "dist/apps/tablit-client/browser",
         "spa": true
       }
     }

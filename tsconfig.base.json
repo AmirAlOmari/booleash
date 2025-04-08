@@ -15,12 +15,12 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@booleash/client-data-access": ["libs/client/data-access/src/index.ts"],
-      "@booleash/client-utils": ["libs/client/utils/src/index.ts"],
-      "@booleash/graphql-pub-sub": ["libs/server/graphql-pub-sub/src/index.ts"],
-      "@booleash/redis": ["libs/server/redis/src/index.ts"],
-      "@booleash/shared-domain": ["libs/shared/domain/src/index.ts"],
-      "@booleash/shared-utils": ["libs/shared/utils/src/index.ts"]
+      "@tablit/client-data-access": ["libs/client/data-access/src/index.ts"],
+      "@tablit/client-utils": ["libs/client/utils/src/index.ts"],
+      "@tablit/graphql-pub-sub": ["libs/server/graphql-pub-sub/src/index.ts"],
+      "@tablit/redis": ["libs/server/redis/src/index.ts"],
+      "@tablit/shared-domain": ["libs/shared/domain/src/index.ts"],
+      "@tablit/shared-utils": ["libs/shared/utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
